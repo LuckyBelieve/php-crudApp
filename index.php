@@ -8,9 +8,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>firstname</th>
-                <th>lastname</th>
-                <th>age</th>
+                <th>username</th>
                 <th>email</th>
                 <th></th>
                 <th></th>
@@ -18,7 +16,7 @@
         </thead>
         <tbody>
             <?php
-            $query = "SELECT * FROM `students`";
+            $query = "SELECT admin_id,username,email FROM `admin`";
             $result = mysqli_query($connection,$query);
             if(!$result){
                 die("query failed".mysqli_error($connection));
@@ -26,13 +24,11 @@
                 while($row = mysqli_fetch_assoc($result)){
                     ?>
                     <tr>
-                        <td><?php echo $row["id"]; ?></td>
-                        <td><?php echo $row["first_name"]; ?></td>
-                        <td><?php echo $row["last_name"]; ?></td>
-                        <td><?php echo $row["age"]; ?></td>
+                        <td><?php echo $row["admin_id"]; ?></td>
+                        <td><?php echo $row["username"]; ?></td>
                         <td><?php echo $row["email"]; ?></td>
-                        <td><a href="update_page.php?id=<?php echo $row["id"];?>" class="btn btn-success">update</a></td>
-                        <td><a href="delete_page.php?id=<?php echo $row["id"];?>" class="btn btn-danger">Delete</a></td>
+                        <td><a href="update_page.php?id=<?php echo $row["admin_id"];?>" class="btn btn-success">update</a></td>
+                        <td><a href="delete_page.php?id=<?php echo $row["admin_id"];?>" class="btn btn-danger">Delete</a></td>
                     </tr>
             <?php
                 };
@@ -42,7 +38,7 @@
     </table> 
     <?php
     if(isset($_GET['message'])){
-        echo `<h6 class="text-success text-center">`.$_GET['message']."</h6>";
+        echo "<h6 class='text-success text-center'>".$_GET['message']."</h6>";
     };
     ?>
     <form action="create.php" method="POST"> 
@@ -50,30 +46,26 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"> Add new student</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Add new user</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
             <div class="form-group">
-                <label for="firstname">Firstname</label>
-                <input type="text" name="firstname" class="form-control" required>
+                <label for="username">username</label>
+                <input type="text" name="username" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="lastname">Lastname</label>
-                <input type="text" name="lastname" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="age">Age</label>
-                <input type="number" name="age" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
+                <label for="lastname">Email</label>
                 <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password" name="password" class="form-control" required>
             </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <input type="submit" value="add student" name="add-student" class="btn btn-success">
+        <input type="submit" value="add user" name="add-user" class="btn btn-success">
       </div>
     </div>
   </div>

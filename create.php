@@ -1,13 +1,12 @@
 <?php
 include ("dbconn.php");
 
-if(isset($_POST['add-student'])){
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $age = $_POST['age'];
+if(isset($_POST['add-user'])){
+    $username = $_POST['username'];
     $email = $_POST['email'];
+    $password =$_POST['password'];
 
-    $query = "INSERT INTO students (first_name,last_name,age,email) VALUES ('$firstname','$lastname','$age','$email')";
+    $query = "INSERT INTO admin (username,email,password) VALUES ('$username','$email',' $password')";
 
     $results = mysqli_query($connection, $query);
     // $results = $connection->query($query);

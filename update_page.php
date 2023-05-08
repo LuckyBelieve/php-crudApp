@@ -4,7 +4,7 @@
 if(isset($_GET['id'])){
     $id=$_GET['id'];
 
-    $query = "select * from `students` WHERE `id`=$id";
+    $query = "select * from `admin` WHERE `admin_id`=$id";
     $result = mysqli_query($connection,$query);
     if(!$result){
         echo "query failed".mysqli_error($connection);
@@ -16,12 +16,11 @@ if(isset($_GET['id'])){
 ?>
 <?php
 if(isset($_POST['update_button'])){
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $age = $_POST['age'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
+    $password =$_POST['password'];
 
-    $query = "UPDATE students set first_name='$firstname',last_name='$lastname',age=$age,email='$email' where id=$id";
+    $query = "UPDATE admin set username='$username',email='$email',password='$password' where admin_id=$id";
     $result = mysqli_query($connection,$query);
     if(!$result){
         echo "query failed".mysqli_error($connection);
@@ -33,23 +32,18 @@ if(isset($_POST['update_button'])){
 
 <div class="container">
 
-
 <form action="update_page.php?id=<?php echo $id; ?>" method="POST">
     <div class="form-group">
-        <label for="firstname">Firstname</label>
-        <input type="text" name="firstname" class="form-control" value="<?php echo $row['first_name'] ?>" required>
+        <label for="username">username</label>
+        <input type="text" name="username" class="form-control" value="<?php echo $row['username'] ?>" required>
     </div>
     <div class="form-group">
-        <label for="lastname">Lastname</label>
-        <input type="text" name="lastname" class="form-control" value="<?php echo $row['last_name'] ?>" required>
+        <label for="email">email</label>
+        <input type="text" name="email" class="form-control" value="<?php echo $row['email'] ?>" required>
     </div>
     <div class="form-group">
-        <label for="age">Age</label>
-        <input type="number" name="age" class="form-control" value="<?php echo $row['age'] ?>" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" name="email" class="form-control" value="<?php echo $row['email'] ?>" required>
+        <label for="password">password</label>
+        <input type="password" name="password" class="form-control" value="<?php echo $row['password'] ?>" required>
     </div>
     <input type="submit" name="update_button" value="update" class="btn btn-success my-2">
 </form>

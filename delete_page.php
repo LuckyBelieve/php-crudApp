@@ -4,7 +4,7 @@
 if(isset($_GET['id'])){
     $id = $_GET['id'];
 
-    $query = "DELETE FROM students where id=$id";
+    $query = "DELETE FROM admin where admin_id=$id";
     $result = mysqli_query($connection,$query);
     if(!$result){
         echo "query failed".mysqli_error($connection);

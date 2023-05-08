@@ -2,7 +2,7 @@
 define("HOSTNAME","localhost");
 define("USERNAME","root");
 define("PASSWORD","");
-define("DATABASE","student_db");
+define("DATABASE","adminPanel");
 $connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE);
 if(!$connection){
     die("connection failed");
