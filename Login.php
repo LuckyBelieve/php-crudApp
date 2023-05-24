@@ -30,12 +30,12 @@
                 <input type="submit" name="login" value="log In" class="btn btn-success my-2">
             </div>
         </form>
+    </main>
         <?php
             if(isset($_GET['message'])){
                 echo "<h6 class='text-danger text-center'>".$_GET['message']."</h6>";
             };
         ?>
-    </main>
     <?php include("footer.php") ?>
 </body>
 </html>
